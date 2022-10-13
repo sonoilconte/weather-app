@@ -8,6 +8,7 @@ class Tester extends React.Component {
 			.then(text => {
 				console.log('text from the call is ', text);
 			})
+			
 			.catch(err => console.log('error making request', err));
 	}
 
