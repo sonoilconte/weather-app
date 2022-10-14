@@ -9,23 +9,8 @@ class App extends React.Component {
 		super();
 		this.state = {
 			searchTerm: '',
-			weatherDays: [
-				{
-					date: '2022-10-14',
-					high: '70',
-					low: '70',
-				},
-				{
-					date: '2022-10-15',
-					high: '71',
-					low: '60',
-				},
-				{
-					date: '2022-10-16',
-					high: '72',
-					low: '62',
-				}
-			]
+			statusMessage: '',
+			weatherDays: [],
 		}
 	}
 
@@ -36,10 +21,29 @@ class App extends React.Component {
 
 	onSearchTermSubmit = async (event) => {
 		event.preventDefault();
-		// console.log('sanity');
-		console.log({ event })
-		const { data: { days } } = await axios.get(`/api?location=${this.state.searchTerm}`);
-		this.setState({ weatherDays: days });
+		let statusMessage;
+		let days, city, state, country;
+		try {
+			({
+				data: {
+					days,
+					city,
+					state,
+					country,
+				}
+			} = await axios.get(`/api?location=${this.state.searchTerm}`));
+			statusMessage = (days && days.length)
+				? `Showing results for ${city}, ${state}, ${country}`
+				: 'No results found';
+		} catch (err) {
+			console.error(err);
+			statusMessage = 'Sorry, something went wrong!'
+			days = [];
+		}
+		this.setState({
+			weatherDays: days,
+			statusMessage,
+		});
 	}
 
 	render() {
@@ -51,7 +55,10 @@ class App extends React.Component {
 					onSearchTermChange={this.onSearchTermChange}
 					onSearchTermSubmit={this.onSearchTermSubmit}
 				/>
-				<WeatherDayList weatherDays={this.state.weatherDays} />
+				<WeatherDayList
+					statusMessage={this.state.statusMessage}
+					weatherDays={this.state.weatherDays}
+				/>
 		  </div>
 		);
 	}	

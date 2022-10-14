@@ -12,7 +12,7 @@ class ApiError extends Error {
 	}
 }
 
-const getCoordinates = async (location) => {
+const getLocationData = async (location) => {
 	try {
 		const params = {
 			name: location,
@@ -22,11 +22,22 @@ const getCoordinates = async (location) => {
 
 		if (data.results && data.results.length) {
 			// For this basic version of the app, just taking the 0th city returned by the API
+			console.log(data.results[0])
+			
 			const {
 				latitude,
-				longitude
+				longitude,
+				name, // city name
+				admin1, // state
+				country,
 			} = data.results[0];
-			return [latitude, longitude];
+			return {
+				latitude,
+				longitude,
+				city: name,
+				state: admin1,
+				country,
+			};
 		} else {
 			console.log('No location data found', data);
 			return null;
@@ -83,19 +94,27 @@ const getWeatherData = async (latitude, longitude) => {
 	
 const weatherRequest = async (req, res) => {
 	const location = req.query.location;
-	let coordinatesResult;
-	let latitude, longitude;
+	let locationData;
+	let latitude, longitude, city, state, country;
 
 	try {
-		coordinatesResult = await getCoordinates(location);
+		locationData = await getLocationData(location);
 	} catch (err) {
 		res.status(err.code).json({ message: err.message });
 		return;
 	}
 
-	if (coordinatesResult) {	
-		[latitude, longitude] = coordinatesResult;
-		console.log(latitude, longitude);
+	console.log({ locationData });
+	
+	if (locationData) {	
+		({
+			latitude,
+			longitude,
+			city, 
+			state,
+			country,
+		} = locationData);
+
 	} else {
 		res.json({ days: [] });
 		return;
@@ -103,7 +122,12 @@ const weatherRequest = async (req, res) => {
 
 	try {
 		const days = await getWeatherData(latitude, longitude);
-		res.json({ days });
+		res.json({
+			city,
+			state,
+			country,
+			days,
+		});
 	} catch (err) {
 		console.error('Error requesting weather data', err);
 		res.status(err.code).json({ message: err.message });
