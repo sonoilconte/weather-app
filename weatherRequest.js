@@ -80,7 +80,6 @@ const getWeatherData = async (latitude, longitude) => {
 };
 	
 const weatherRequest = async (req, res) => {
-	// console.log('weather req', req);
 	const location = req.query.location;
 	let coordinatesResult;
 	let latitude, longitude;
@@ -105,6 +104,7 @@ const weatherRequest = async (req, res) => {
 		res.json({ days });
 	} catch (err) {
 		console.error('Error requesting weather data', err);
+		res.status(err.code).json({ message: err.message });
 	}
 };
 

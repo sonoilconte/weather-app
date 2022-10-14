@@ -16,12 +16,6 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(buildPath, 'index.html'))
 });
 
-app.get('/foo', (req, res) => {
-	console.log(' SERVER SANITY!!!!');
-	res.send('Sanity foo');
-	// res.json({ foo: 'bar' });
-});
-
 app.get('/api', weatherRequest);
 
 app.listen(PORT, () => {
