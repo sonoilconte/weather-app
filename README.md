@@ -11,6 +11,11 @@ Install React client dependencies
 To run locally in development mode, install [nodemon](https://nodemon.io/) if you don't have it already. 
 `npm i -g nodemon`
 
+In order to load environment variables, add a .env file in the project root with key value pairs, e.g. 
+```
+GEOENCODING_URL=http://example.com
+```
+
 To start the express server, run `npm start` in the project root. 
 
 To start the development React build, in a new terminal run `cd client && npm start`.
