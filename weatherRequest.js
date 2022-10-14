@@ -62,6 +62,8 @@ const getWeatherData = async (latitude, longitude) => {
 
 	console.log('Got weather data', data);
 
+	// handle case where we got data but it's not as expected
+
 	const { daily } = data;
 	const dates = daily.time;
 	const highs = daily.temperature_2m_max;
@@ -95,7 +97,7 @@ const weatherRequest = async (req, res) => {
 		[latitude, longitude] = coordinatesResult;
 		console.log(latitude, longitude);
 	} else {
-		res.json({ data: null });
+		res.json({ days: [] });
 		return;
 	}
 

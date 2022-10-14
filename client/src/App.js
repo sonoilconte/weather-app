@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './components/Search';
 import WeatherDayList from './components/WeatherDayList';
+import axios from 'axios';
 
 class App extends React.Component {
 
@@ -10,9 +11,9 @@ class App extends React.Component {
 			searchTerm: '',
 			weatherDays: [
 				{
-				date: '2022-10-14',
-				high: '70',
-				low: '70',
+					date: '2022-10-14',
+					high: '70',
+					low: '70',
 				},
 				{
 					date: '2022-10-15',
@@ -33,11 +34,23 @@ class App extends React.Component {
 		this.setState({ searchTerm: event.target.value });
 	}
 
+	onSearchTermSubmit = async (event) => {
+		event.preventDefault();
+		// console.log('sanity');
+		console.log({ event })
+		const { data: { days } } = await axios.get(`/api?location=${this.state.searchTerm}`);
+		this.setState({ weatherDays: days });
+	}
+
 	render() {
 		return (
 		  <div className="App">
 				<h1>Weather Forecast</h1>
-				<Search searchTerm={this.searchTerm} onSearchTermChange={this.onSearchTermChange} />
+				<Search
+					searchTerm={this.searchTerm}
+					onSearchTermChange={this.onSearchTermChange}
+					onSearchTermSubmit={this.onSearchTermSubmit}
+				/>
 				<WeatherDayList weatherDays={this.state.weatherDays} />
 		  </div>
 		);
