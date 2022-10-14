@@ -1,27 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-import Tester from './components/Tester';
+import React from 'react';
+import Search from './components/Search';
+import WeatherDayList from './components/WeatherDayList';
 
-function App() {
-  return (
-	  <div className="App">
-		  <Tester />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+	constructor() {
+		super();
+		this.state = {
+			searchTerm: '',
+			weatherDays: ['x', 'y', 'z', 'q']
+		}
+	}
+
+	onSearchTermChange = (event) => {
+		console.log(event.target.value);
+		this.setState({ searchTerm: event.target.value });
+	}
+
+	render() {
+		return (
+		  <div className="App">
+				<h1>Weather Forecast</h1>
+				<Search searchTerm={this.searchTerm} onSearchTermChange={this.onSearchTermChange} />
+				<WeatherDayList weatherDays={this.state.weatherDays} />
+		  </div>
+		);
+	}	
 }
 
 export default App;
