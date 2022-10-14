@@ -8,7 +8,23 @@ class App extends React.Component {
 		super();
 		this.state = {
 			searchTerm: '',
-			weatherDays: ['x', 'y', 'z', 'q']
+			weatherDays: [
+				{
+				date: '2022-10-14',
+				high: '70',
+				low: '70',
+				},
+				{
+					date: '2022-10-15',
+					high: '71',
+					low: '60',
+				},
+				{
+					date: '2022-10-16',
+					high: '72',
+					low: '62',
+				}
+			]
 		}
 	}
 

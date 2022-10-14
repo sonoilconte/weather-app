@@ -1,16 +1,11 @@
 import React from 'react';
+import WeatherDay from './WeatherDay';
 
 class WeatherDayList extends React.Component {
-
-	formatList = (weatherDays) => {
-		return weatherDays.map((day, index) => <div key={index}>{`${index} ${day}`}</div>);
-	}
-
 	render() {
 		return (
 			<div>
-				{this.formatList(this.props.weatherDays)}
-				{/* {this.props.weatherDays} */}
+				{this.props.weatherDays.map((day, index) => <WeatherDay key={index} day={day} />)}
 			</div>
 		);
 	}
