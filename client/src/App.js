@@ -15,7 +15,6 @@ class App extends React.Component {
 	}
 
 	onSearchTermChange = (event) => {
-		console.log(event.target.value);
 		this.setState({ searchTerm: event.target.value });
 	}
 
