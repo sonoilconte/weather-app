@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the WeatherDay component correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-title"
+    >
+      Fri, October 14, 2022
+    </div>
+    <div
+      className="card-text"
+    >
+      High: 
+      75.3
+      °F
+    </div>
+    <div
+      className="card-text"
+    >
+      Low: 
+      56.8
+      °F
+    </div>
+  </div>
+</div>
+`;

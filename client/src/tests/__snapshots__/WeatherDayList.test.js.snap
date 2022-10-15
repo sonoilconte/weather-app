@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the WeatherDayList correctly with an empty array for data 1`] = `
+<div
+  className="row justify-content-center"
+>
+  <div
+    className="col-md-6"
+  >
+    <div
+      className="status-message"
+    >
+      No results found
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders the WeatherDayList correctly with weather data 1`] = `
+<div
+  className="row justify-content-center"
+>
+  <div
+    className="col-md-6"
+  >
+    <div
+      className="status-message"
+    >
+      Showing results for Denver, Colorado, United States
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="card-body"
+      >
+        <div
+          className="card-title"
+        >
+          Fri, October 14, 2022
+        </div>
+        <div
+          className="card-text"
+        >
+          High: 
+          60.1
+          °F
+        </div>
+        <div
+          className="card-text"
+        >
+          Low: 
+          50.2
+          °F
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="card-body"
+      >
+        <div
+          className="card-title"
+        >
+          Sat, October 15, 2022
+        </div>
+        <div
+          className="card-text"
+        >
+          High: 
+          61.1
+          °F
+        </div>
+        <div
+          className="card-text"
+        >
+          Low: 
+          51.2
+          °F
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="card-body"
+      >
+        <div
+          className="card-title"
+        >
+          Sun, October 16, 2022
+        </div>
+        <div
+          className="card-text"
+        >
+          High: 
+          62.1
+          °F
+        </div>
+        <div
+          className="card-text"
+        >
+          Low: 
+          52.2
+          °F
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

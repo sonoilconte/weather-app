@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders App component correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row justify-content-center"
+  >
+    <div
+      className="col-md-6"
+    >
+      <h1
+        className="display-4"
+      >
+        Weather Forecast
+      </h1>
+    </div>
+  </div>
+  <div
+    className="row justify-content-center"
+  >
+    <div
+      className="col-md-6"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          onChange={[Function]}
+          placeholder="Enter a city or zip code"
+        />
+        <input
+          className="btn btn-primary"
+          type="submit"
+        />
+      </form>
+    </div>
+  </div>
+  <div
+    className="row justify-content-center"
+  >
+    <div
+      className="col-md-6"
+    >
+      <div
+        className="status-message"
+      />
+    </div>
+  </div>
+</div>
+`;

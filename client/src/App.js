@@ -54,7 +54,6 @@ class App extends React.Component {
 					</div>
 				</div>
 				<Search
-					searchTerm={this.searchTerm}
 					onSearchTermChange={this.onSearchTermChange}
 					onSearchTermSubmit={this.onSearchTermSubmit}
 				/>
