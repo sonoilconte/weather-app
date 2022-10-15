@@ -48,8 +48,12 @@ class App extends React.Component {
 
 	render() {
 		return (
-		  <div className="App">
-				<h1>Weather Forecast</h1>
+			<div className="container">
+				<div className="row justify-content-center">
+					<div className="col-md-6">
+						<h1 className='display-4'>Weather Forecast</h1>
+					</div>
+				</div>
 				<Search
 					searchTerm={this.searchTerm}
 					onSearchTermChange={this.onSearchTermChange}
