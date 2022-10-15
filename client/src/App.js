@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from './components/Search';
 import WeatherDayList from './components/WeatherDayList';
-import axios from 'axios';
 
 class App extends React.Component {
 
@@ -23,17 +22,18 @@ class App extends React.Component {
 		let statusMessage;
 		let days, city, state, country;
 		try {
+			const response  = await fetch(`/api?location=${this.state.searchTerm}`);
 			({
-				data: {
-					days,
-					city,
-					state,
-					country,
-				}
-			} = await axios.get(`/api?location=${this.state.searchTerm}`));
+				days,
+				city,
+				state,
+				country,
+			} = await response.json());
+
 			statusMessage = (days && days.length)
 				? `Showing results for ${city}, ${state}, ${country}`
 				: 'No results found';
+			
 		} catch (err) {
 			console.error(err);
 			statusMessage = 'Sorry, something went wrong!'
