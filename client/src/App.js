@@ -33,9 +33,10 @@ class App extends React.Component {
 				? `Showing results for ${city}, ${state}, ${country}`
 				: 'No results found';
 		} catch (err) {
-			console.error(err);
+			console.error(err
+        );
 			statusMessage = 'Sorry, something went wrong!'
-			days = [];
+			days = []; 
 		}
 		this.setState({
 			weatherDays: days,
