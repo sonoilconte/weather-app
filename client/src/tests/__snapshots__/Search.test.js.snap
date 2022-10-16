@@ -9,10 +9,12 @@ exports[`renders the Search component correctly 1`] = `
   >
     <form>
       <input
+        data-testid="searchField"
         placeholder="Enter a city or zip code"
       />
       <input
         className="btn btn-primary"
+        data-testid="submitBtn"
         type="submit"
       />
     </form>
