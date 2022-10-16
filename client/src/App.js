@@ -22,13 +22,16 @@ class App extends React.Component {
 		let statusMessage;
 		let days, city, state, country;
 		try {
-			const response  = await fetch(`/api?location=${this.state.searchTerm}`);
+
+			const response = await fetch(`/api?location=${this.state.searchTerm}`);
+
 			({
 				days,
 				city,
 				state,
 				country,
 			} = await response.json());
+
 
 			statusMessage = (days && days.length)
 				? `Showing results for ${city}, ${state}, ${country}`

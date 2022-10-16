@@ -9,8 +9,13 @@ class Search extends React.Component {
 						<input
 							placeholder='Enter a city or zip code'
 							onChange={this.props.onSearchTermChange}
+							data-testid="searchField"
 						/>
-						<input type='submit' className="btn btn-primary" />
+						<input
+							type='submit'
+							className="btn btn-primary"
+							data-testid="submitBtn"
+						/>
 					</form>
 				</div>
 			</div>
