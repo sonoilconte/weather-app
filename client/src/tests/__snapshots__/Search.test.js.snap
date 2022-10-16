@@ -7,9 +7,12 @@ exports[`renders the Search component correctly 1`] = `
   <div
     className="col-md-6"
   >
-    <form>
+    <form
+      onSubmit={[MockFunction]}
+    >
       <input
         data-testid="searchField"
+        onChange={[MockFunction]}
         placeholder="Enter a city or zip code"
       />
       <input
