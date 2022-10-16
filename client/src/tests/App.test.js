@@ -21,7 +21,7 @@ it('renders the expected data when we enter a valid search term and click submit
 			{
 				date: '2022-10-15',
 				high: 62.7,
-				low: 36.5
+				low: 36.5 
 			},
 			{
 				date: '2022-10-16',
