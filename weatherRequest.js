@@ -1,5 +1,6 @@
 const geoencodingAPI = require('./apis/geoencodingAPI');
 const weatherAPI = require('./apis/weatherAPI');
+const formatWeatherData = require('./formatWeatherData');
 
 // We throw an ApiError when we want to send some non-200 http code to the client
 // and include a message
@@ -67,26 +68,7 @@ const getWeatherData = async (lat, long) => {
         console.error(errorMsg, err);
         throw new ApiError(500, errorMsg);
     }
-
-    console.log('Got weather data', data);
-
-    // handle case where we got data but it's not as expected
-
-    const { daily } = data;
-    const dates = daily.time;
-    const highs = daily.temperature_2m_max;
-    const lows = daily.temperature_2m_min;
-
-    const days = [];
-    for (let i = 0; i < 5; i += 1) {
-        days.push({
-            date: dates[i],
-            high: highs[i],
-            low: lows[i],
-        });
-    }
-
-    return days;
+    return formatWeatherData(data);
 };
 
 const weatherRequest = async (req, res) => {
@@ -104,8 +86,6 @@ const weatherRequest = async (req, res) => {
         res.status(err.code).json({ message: err.message });
         return;
     }
-
-    console.log({ locationData });
 
     if (locationData) {
         ({
